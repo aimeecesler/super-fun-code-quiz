@@ -195,8 +195,22 @@ function gameOver() {
     event.stopImmediatePropagation();
 
     var initialsEntered = input.value;
-    highscoreArr.push({ initials: initialsEntered, score: endScore });
-    localStorage.setItem("highscores", JSON.stringify(highscoreArr));
+    console.log(JSON.parse(localStorage.getItem("highscores")));
+    if(JSON.parse(localStorage.getItem("highscores")) == null){
+        highscoreArr.push({ initials: initialsEntered, score: endScore });
+        localStorage.setItem("highscores", JSON.stringify(highscoreArr));
+    } else if (highscoreArr.length > 0){
+        highscoreArr.push({ initials: initialsEntered, score: endScore });
+        localStorage.setItem("highscores", JSON.stringify(highscoreArr));
+    } 
+    else {
+        var highscoreStorage = JSON.parse(localStorage.getItem("highscores"));
+        for (var i = 0; i < highscoreStorage.length; i++){
+            highscoreArr.push(highscoreStorage[i]);
+        }
+        highscoreArr.push({ initials: initialsEntered, score: endScore });
+        localStorage.setItem("highscores", JSON.stringify(highscoreArr));
+    }
     gotoHighscores();
   });
 }
