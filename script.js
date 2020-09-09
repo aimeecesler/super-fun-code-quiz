@@ -60,3 +60,19 @@ var questionsAndAnswers = [
     correctAnswer: "4. console log",
   },
 ];
+
+// calls default function for start page
+startPage();
+
+// default function for start page, sets main header, game description, and start button.
+function startPage() {
+var startHeader = document.createElement("h1");
+startHeader.textContent = "Coding Quiz Challenge";
+startDiv.appendChild(startHeader);
+var gameIntro = document.createElement("p");
+gameIntro.textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!";
+startDiv.appendChild(gameIntro);
+var startButton = document.createElement("button");
+startButton.textContent = "Start Quiz";
+startDiv.appendChild(startButton);
+}
