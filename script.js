@@ -128,7 +128,7 @@ function renderQuestions() {
   var optionList = document.createElement("ul");
   optionList.setAttribute("class", "col-lg-12");
   // loop through the potential answers and make list items for each
-  for (var answerindex = 0; answerindex < 4; answerindex++) {
+  for (var answerindex = 0; answerindex < questionsAndAnswers[questionIndex].answers.length; answerindex++) {
     var answerListEl = document.createElement("li");
     var answerButton = document.createElement("button");
     answerButton.setAttribute("class", "btn");
