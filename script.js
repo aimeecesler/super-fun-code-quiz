@@ -1,5 +1,6 @@
 var startDiv = document.getElementById("start-div");
 var quizDiv = document.getElementById("questions-div");
+var resultsDiv = document.getElementById("results-div");
 var gameOverDiv = document.getElementById("game-over-form");
 var highscoreDiv = document.getElementById("highscore-div");
 var viewHighscores = document.getElementById("highscore");
@@ -8,8 +9,9 @@ var timer = document.getElementById("timer");
 // global variables
 var secondsLeft = 75;
 var questionIndex = 0;
-var answerindex = 0;
+var answerindex;
 var highscoreArr = [];
+var timerInterval;
 
 var questionsAndAnswers = [
   {
@@ -67,6 +69,7 @@ startPage();
 
 // default function for start page, sets main header, game description, and start button.
 function startPage() {
+  timer.textContent = "Timer: 0";
   // create header element
   var startHeader = document.createElement("h1");
   startHeader.textContent = "Coding Quiz Challenge";
@@ -94,11 +97,10 @@ function startPage() {
 
 // function to start timer
 function startTimer() {
-  var secondsLeft = 75;
   var timerInterval = setInterval(function () {
     timer.textContent = "Timer: " + secondsLeft;
     secondsLeft--;
-    if (secondsLeft < 0) {
+    if (secondsLeft < 0 || questionIndex === questionsAndAnswers.length) {
       clearInterval(timerInterval);
       gameOver();
     }
@@ -107,22 +109,57 @@ function startTimer() {
 
 // function to render questions
 function renderQuestions() {
-startDiv.innerHTML = "";
-if (questionIndex === questionsAndAnswers.length){
+  // clear out the start div contents
+  startDiv.innerHTML = "";
+
+  quizDiv.innerHTML = "";
+  // stop at the end of the q&a array
+  if (questionIndex === questionsAndAnswers.length) {
     return;
-}
-var questionHeader = document.createElement("h2");
-questionHeader.textContent = questionsAndAnswers[questionIndex].question;
-quizDiv.appendChild(questionHeader);
-var optionList = document.createElement("ul");
-for (var answerindex = 0; answerindex < 4; answerindex++){
-var answerListEl = document.createElement("li");
-var answerButton = document.createElement("button");
-answerButton.textContent = questionsAndAnswers[questionIndex].answers[answerindex];
-answerListEl.appendChild(answerButton);
-optionList.appendChild(answerListEl);
-}
-quizDiv.appendChild(optionList);
+  }
+  // create header and add question
+  var questionHeader = document.createElement("h2");
+  questionHeader.textContent = questionsAndAnswers[questionIndex].question;
+  quizDiv.appendChild(questionHeader);
+  // create list
+  var optionList = document.createElement("ul");
+  // loop through the potential answers and make list items for each
+  for (var answerindex = 0; answerindex < 4; answerindex++) {
+    var answerListEl = document.createElement("li");
+    var answerButton = document.createElement("button");
+    answerButton.textContent =
+      questionsAndAnswers[questionIndex].answers[answerindex];
+    answerListEl.appendChild(answerButton);
+    optionList.appendChild(answerListEl);
+  }
+  quizDiv.appendChild(optionList);
+  // listen for the click
+  quizDiv.addEventListener("click", function (event) {
+    event.stopImmediatePropagation();
+    resultsDiv.innerHTML = "";
+    if (event.target.matches("button")) {
+      // if it is the correct answer
+      if (
+        event.target.textContent ==
+        questionsAndAnswers[questionIndex].correctAnswer
+      ) {
+        var results = document.createElement("p");
+        results.textContent = "Correct!";
+        resultsDiv.appendChild(results);
+        questionIndex++;
+        renderQuestions();
+      }
+      // if it is the wrong answer
+      else {
+        secondsLeft = secondsLeft - 10;
+        var results = document.createElement("p");
+        results.textContent = "Wrong!";
+        resultsDiv.appendChild(results);
+        questionIndex++;
+        renderQuestions();
+      }
+    }
+  });
 }
 
 // function to go to the list of highscores
@@ -131,6 +168,6 @@ function gotoHighscores() {
 }
 
 // function to go to the game over form
-function gameOver(){
-    console.log("game over");
+function gameOver() {
+  console.log("game over");
 }
