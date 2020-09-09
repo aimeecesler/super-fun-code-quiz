@@ -259,6 +259,8 @@ function gotoHighscores() {
     event.stopImmediatePropagation();
     //   if button is clicked clear the highscore div and go to the start page
     highscoreDiv.innerHTML = "";
+    questionIndex = 0;
+    secondsLeft = 75;
     startPage();
   });
 
