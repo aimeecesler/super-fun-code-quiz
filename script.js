@@ -180,7 +180,6 @@ function gameOver() {
   gameOverDiv.appendChild(endScoreEl);
   //   create form
   var highscoreForm = document.createElement("form");
-  highscoreForm.setAttribute("class", "form-inline col-lg-12");
   var formLabel = document.createElement("label");
   formLabel.setAttribute("class", "form-group mb-2");
   formLabel.textContent = "Enter Initials";
