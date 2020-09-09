@@ -9,6 +9,7 @@ var timer = document.getElementById("timer");
 // global variables
 var secondsLeft = 75;
 var questionIndex = 0;
+var endScore;
 var answerindex;
 var highscoreArr = [];
 var timerInterval;
@@ -86,8 +87,8 @@ function startPage() {
 
   // event listener for start button
   startButton.addEventListener("click", function () {
-    renderQuestions();
     startTimer();
+    renderQuestions();
   });
 
   viewHighscores.addEventListener("click", function () {
@@ -169,5 +170,30 @@ function gotoHighscores() {
 
 // function to go to the game over form
 function gameOver() {
-  console.log("game over");
+  // create header
+  resultsDiv.innerHTML = "";
+  var endGameHeader = document.createElement("h2");
+  endGameHeader.textContent = "All done!";
+  gameOverDiv.appendChild(endGameHeader);
+  //   create paragraph
+  var endScore = secondsLeft + 1;
+  var endScoreEl = document.createElement("p");
+  endScoreEl.setAttribute("class", "col-lg-12");
+  endScoreEl.textContent = "Your final score is " + endScore + "!";
+  gameOverDiv.appendChild(endScoreEl);
+  //   create form
+  var highscoreForm = document.createElement("form");
+  highscoreForm.setAttribute("class", "form-inline col-lg-12");
+  var formLabel = document.createElement("label");
+  formLabel.setAttribute("class", "form-group mb-2");
+  formLabel.textContent = "Enter Initials";
+  highscoreForm.appendChild(formLabel);
+  var input = document.createElement("input");
+  input.setAttribute("type", "text");
+  input.setAttribute("class", "form-control mr-2 ml-2 mb-2");
+  highscoreForm.appendChild(input);
+  var submitButton = document.createElement("button");
+  submitButton.textContent = "Submit";
+  highscoreForm.appendChild(submitButton);
+  gameOverDiv.appendChild(highscoreForm);
 }
