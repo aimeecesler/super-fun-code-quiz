@@ -2,7 +2,7 @@ var startDiv = document.getElementById("start-div");
 var quizDiv = document.getElementById("questions-div");
 var gameOverDiv = document.getElementById("game-over-form");
 var highscoreDiv = document.getElementById("highscore-div");
-var highscore = document.getElementById("highscore");
+var viewHighscores = document.getElementById("highscore");
 var timer = document.getElementById("timer");
 
 // global variables
@@ -66,13 +66,42 @@ startPage();
 
 // default function for start page, sets main header, game description, and start button.
 function startPage() {
-var startHeader = document.createElement("h1");
-startHeader.textContent = "Coding Quiz Challenge";
-startDiv.appendChild(startHeader);
-var gameIntro = document.createElement("p");
-gameIntro.textContent = "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!";
-startDiv.appendChild(gameIntro);
-var startButton = document.createElement("button");
-startButton.textContent = "Start Quiz";
-startDiv.appendChild(startButton);
+  // create header element
+  var startHeader = document.createElement("h1");
+  startHeader.textContent = "Coding Quiz Challenge";
+  startDiv.appendChild(startHeader);
+  // create p element
+  var gameIntro = document.createElement("p");
+  gameIntro.textContent =
+    "Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!";
+  startDiv.appendChild(gameIntro);
+  // create start button
+  var startButton = document.createElement("button");
+  startButton.textContent = "Start Quiz";
+  startDiv.appendChild(startButton);
+
+  // event listener for start button
+  startButton.addEventListener("click", function () {
+    renderQuestions();
+    startTimer();
+  });
+
+  viewHighscores.addEventListener("click", function () {
+    gotoHighscores();
+  });
+}
+
+// function to start timer
+function startTimer() {
+  console.log("start timer");
+}
+
+// function to render questions
+function renderQuestions() {
+  console.log("render questions");
+}
+
+// function to go to the list of highscores
+function gotoHighscores() {
+    console.log("go to highscores")
 }
