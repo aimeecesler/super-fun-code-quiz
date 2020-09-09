@@ -29,12 +29,17 @@ table {
   margin-top: 5em;
   width: 50%;
 }
+.badge{
+    margin: 0.5em;
+}
 .table {
   max-width: 50%;
 }
 #timer {
   margin-right: 1em;
   font-size: 2em;
+  color: #D90492;
+  background-color: white;
 }
 #highscore {
   margin-left: 2em;
