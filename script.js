@@ -151,7 +151,7 @@ function renderQuestions() {
         var results = document.createElement("img");
         results.setAttribute(
           "src",
-          "https://memecrunch.com/meme/C4XQK/yesssss-correct-answer/image.gif?w=580&c=1"
+          "./right.gif"
         );
         results.setAttribute("alt", "correct answer meme");
         resultsDiv.appendChild(results);
@@ -165,7 +165,7 @@ function renderQuestions() {
         var results = document.createElement("img");
         results.setAttribute(
           "src",
-          "https://media0.giphy.com/media/VEu2A22WVrTug2la7V/giphy.gif"
+          "./wrong.gif"
         );
         results.setAttribute("alt", "wrong answer meme");
         resultsDiv.appendChild(results);
