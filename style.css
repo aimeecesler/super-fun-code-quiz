@@ -1,5 +1,6 @@
 body {
-  background-color: lightgray;
+  background-image: url(./background.jpeg);
+  background-size: 100%;
 }
 h1 {
   text-align: center;
@@ -8,13 +9,13 @@ h1 {
 h2 {
   padding-top: 0.5em;
 }
-button {
-  background-color: #745e8f;
+.btn {
+  background-color: #D90492;
   color: white;
   margin-bottom: 1em;
 }
 button:hover {
-  background-color: #b69fd1;
+  background-color: #ee88cc;
 }
 
 ul {
@@ -32,10 +33,12 @@ table {
   max-width: 50%;
 }
 #timer {
-  padding-right: 1em;
+  margin-right: 1em;
+  font-size: 2em;
 }
 #highscore {
-  padding-left: 1em;
+  margin-left: 2em;
+  margin-top: 1em;
 }
 #start-div {
   justify-content: center;

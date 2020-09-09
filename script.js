@@ -82,6 +82,7 @@ function startPage() {
   startDiv.appendChild(gameIntro);
   // create start button
   var startButton = document.createElement("button");
+  startButton.setAttribute("class", "btn");
   startButton.textContent = "Start Quiz";
   startDiv.appendChild(startButton);
 
@@ -103,7 +104,7 @@ function startTimer() {
     secondsLeft--;
     if (secondsLeft < 0 || questionIndex === questionsAndAnswers.length) {
       clearInterval(timerInterval);
-      setTimeout(gameOver,1000);
+      setTimeout(gameOver, 1000);
     }
   }, 1000);
 }
@@ -130,6 +131,7 @@ function renderQuestions() {
   for (var answerindex = 0; answerindex < 4; answerindex++) {
     var answerListEl = document.createElement("li");
     var answerButton = document.createElement("button");
+    answerButton.setAttribute("class", "btn");
     answerButton.textContent =
       questionsAndAnswers[questionIndex].answers[answerindex];
     answerListEl.appendChild(answerButton);
@@ -200,6 +202,7 @@ function gameOver() {
   input.setAttribute("class", "form-control mr-2 ml-2 mb-2");
   highscoreForm.appendChild(input);
   var submitButton = document.createElement("button");
+  submitButton.setAttribute("class", "btn");
   submitButton.textContent = "Submit";
   highscoreForm.appendChild(submitButton);
   gameOverDiv.appendChild(highscoreForm);
@@ -244,7 +247,7 @@ function gotoHighscores() {
   highscoreDiv.innerHTML = "";
   //   create header
   var highscoreHeader = document.createElement("h2");
-  highscoreHeader.setAttribute("class","col-lg-12");
+  highscoreHeader.setAttribute("class", "col-lg-12");
   highscoreHeader.textContent = "Highscores!";
   highscoreDiv.appendChild(highscoreHeader);
   //   create table
@@ -282,13 +285,14 @@ function gotoHighscores() {
 
   //   create back button
   var buttonDiv = document.createElement("div");
-  buttonDiv.setAttribute("class","col-lg-12");
+  buttonDiv.setAttribute("class", "col-lg-12");
   var backBtn = document.createElement("button");
-  backBtn.setAttribute("class", "mr-2");
+  backBtn.setAttribute("class", "mr-2 btn");
   backBtn.textContent = "Go Back";
   buttonDiv.appendChild(backBtn);
   //   create clear button
   var clearBtn = document.createElement("button");
+  clearBtn.setAttribute("class", "btn");
   clearBtn.textContent = "Clear Highscores";
   buttonDiv.appendChild(clearBtn);
   highscoreDiv.appendChild(buttonDiv);
