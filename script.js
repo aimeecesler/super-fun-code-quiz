@@ -103,7 +103,7 @@ function startTimer() {
     secondsLeft--;
     if (secondsLeft < 0 || questionIndex === questionsAndAnswers.length) {
       clearInterval(timerInterval);
-      gameOver();
+      setTimeout(gameOver,1000);
     }
   }, 1000);
 }
@@ -154,7 +154,7 @@ function renderQuestions() {
         results.setAttribute("alt", "correct answer meme");
         resultsDiv.appendChild(results);
         questionIndex++;
-        setTimeout(renderQuestions, 2000);
+        setTimeout(renderQuestions, 1000);
       }
       // if it is the wrong answer
       else {
@@ -168,7 +168,7 @@ function renderQuestions() {
         results.setAttribute("alt", "wrong answer meme");
         resultsDiv.appendChild(results);
         questionIndex++;
-        setTimeout(renderQuestions, 2000);
+        setTimeout(renderQuestions, 1000);
       }
     }
   });
