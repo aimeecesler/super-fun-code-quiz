@@ -209,9 +209,17 @@ function gotoHighscores() {
     var highscoreHeader = document.createElement("h2");
     highscoreHeader.textContent = "Highscores!";
     highscoreDiv.appendChild(highscoreHeader);
+    var highscoreTable = document.createElement("table");
+    highscoreTable.setAttribute("class","table");
+    var tableHeaderRow = document.createElement("tr");
+    var tableInitialsHeader = document.createElement("th");
+    var tableScoreHeader = document.createElement("th");
+    tableInitialsHeader.textContent = "Initials";
+    tableScoreHeader.textContent = "Score";
+    tableHeaderRow.appendChild(tableInitialsHeader);
+    tableHeaderRow.appendChild(tableScoreHeader);
+    highscoreTable.appendChild(tableHeaderRow);
     for (var highscoreIndex = 0; highscoreIndex < highscoreArr.length; highscoreIndex++){
-        var highscoreTable = document.createElement("table");
-        highscoreTable.setAttribute("class","table");
         var highscoreRow = document.createElement("tr");
         var tableInitials = document.createElement("td");
         var tableScores = document.createElement("td");
@@ -221,6 +229,13 @@ function gotoHighscores() {
         highscoreRow.appendChild(tableInitials);
         highscoreRow.appendChild(tableScores);
         highscoreTable.appendChild(highscoreRow);
-        highscoreDiv.appendChild(highscoreTable);
     }
+    highscoreDiv.appendChild(highscoreTable);
+    var backBtn = document.createElement("button");
+    backBtn.setAttribute("class","mr-2");
+    backBtn.textContent = "Go Back";
+    highscoreDiv.appendChild(backBtn);
+    var clearBtn = document.createElement("button");
+    clearBtn.textContent = "Clear Highscores";
+    highscoreDiv.appendChild(clearBtn);
   }
