@@ -1,8 +1,11 @@
+// targeting divs
 var startDiv = document.getElementById("start-div");
 var quizDiv = document.getElementById("questions-div");
 var resultsDiv = document.getElementById("results-div");
 var gameOverDiv = document.getElementById("game-over-form");
 var highscoreDiv = document.getElementById("highscore-div");
+
+// targeting navbar elements
 var viewHighscores = document.getElementById("highscore");
 var timer = document.getElementById("timer");
 
@@ -15,6 +18,7 @@ var answerindex;
 var highscoreArr = [];
 var timerInterval;
 
+// q&a array
 var questionsAndAnswers = [
   {
     question: "Commonly used data types DO NOT include:",
@@ -194,22 +198,26 @@ function gameOver() {
     event.preventDefault();
     event.stopImmediatePropagation();
 
+    // create variable for initials input
     var initialsEntered = input.value;
-    console.log(JSON.parse(localStorage.getItem("highscores")));
-    if(JSON.parse(localStorage.getItem("highscores")) == null){
-        highscoreArr.push({ initials: initialsEntered, score: endScore });
-        localStorage.setItem("highscores", JSON.stringify(highscoreArr));
-    } else if (highscoreArr.length > 0){
-        highscoreArr.push({ initials: initialsEntered, score: endScore });
-        localStorage.setItem("highscores", JSON.stringify(highscoreArr));
-    } 
+    // if local storage is empty then just push the object to the array and set the array to local storage
+    if (JSON.parse(localStorage.getItem("highscores")) == null) {
+      highscoreArr.push({ initials: initialsEntered, score: endScore });
+      localStorage.setItem("highscores", JSON.stringify(highscoreArr));
+    }
+    // if the highscore array is not empty then just push the object to the array and set the array to local storage
+    else if (highscoreArr.length > 0) {
+      highscoreArr.push({ initials: initialsEntered, score: endScore });
+      localStorage.setItem("highscores", JSON.stringify(highscoreArr));
+    }
+    // if there is something in local storage but not the array, then push the local storage to your array then add new objects and set the array to local storage
     else {
-        var highscoreStorage = JSON.parse(localStorage.getItem("highscores"));
-        for (var i = 0; i < highscoreStorage.length; i++){
-            highscoreArr.push(highscoreStorage[i]);
-        }
-        highscoreArr.push({ initials: initialsEntered, score: endScore });
-        localStorage.setItem("highscores", JSON.stringify(highscoreArr));
+      var highscoreStorage = JSON.parse(localStorage.getItem("highscores"));
+      for (var i = 0; i < highscoreStorage.length; i++) {
+        highscoreArr.push(highscoreStorage[i]);
+      }
+      highscoreArr.push({ initials: initialsEntered, score: endScore });
+      localStorage.setItem("highscores", JSON.stringify(highscoreArr));
     }
     gotoHighscores();
   });
