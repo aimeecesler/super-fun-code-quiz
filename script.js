@@ -45,13 +45,8 @@ var questionsAndAnswers = [
   {
     question:
       "String values must be enclosed within _____ when being assigned to variables.",
-    answers: [
-      "1. commas",
-      "2. curly brackets",
-      "3. quotes",
-      "4. parentheses",
-      "3. quotes",
-    ],
+    answers: ["1. commas", "2. curly brackets", "3. quotes", "4. parentheses"],
+    correctAnswer: "3. quotes",
   },
   {
     question:
@@ -88,6 +83,7 @@ function startPage() {
 
   // event listener for start button
   startButton.addEventListener("click", function () {
+    i = 0;
     startTimer();
     renderQuestions();
   });
@@ -111,6 +107,7 @@ function startTimer() {
 
 // function to render questions
 function renderQuestions() {
+  i = 0;
   // clear out the start div contents
   startDiv.innerHTML = "";
 
@@ -166,8 +163,9 @@ function renderQuestions() {
 
 // function to go to the game over form
 function gameOver() {
-  // create header
+  //   clear results div
   resultsDiv.innerHTML = "";
+  // create header
   var endGameHeader = document.createElement("h2");
   endGameHeader.textContent = "All done!";
   gameOverDiv.appendChild(endGameHeader);
@@ -193,49 +191,72 @@ function gameOver() {
   highscoreForm.appendChild(submitButton);
   gameOverDiv.appendChild(highscoreForm);
 
-//   add event listener for submit button
-submitButton.addEventListener("click", function(event){
+  //   add event listener for submit button
+  submitButton.addEventListener("click", function (event) {
     event.preventDefault();
+    event.stopImmediatePropagation();
     var initialsEntered = input.value;
-    highscoreArr.push({initials: initialsEntered, score: endScore});
-    localStorage.setItem("highscores",JSON.stringify(highscoreArr));
+    highscoreArr.push({ initials: initialsEntered, score: endScore });
+    localStorage.setItem("highscores", JSON.stringify(highscoreArr));
     gotoHighscores();
-})
+  });
 }
 
 // function to go to the list of highscores
 function gotoHighscores() {
-    gameOverDiv.innerHTML = "";
-    var highscoreHeader = document.createElement("h2");
-    highscoreHeader.textContent = "Highscores!";
-    highscoreDiv.appendChild(highscoreHeader);
-    var highscoreTable = document.createElement("table");
-    highscoreTable.setAttribute("class","table");
-    var tableHeaderRow = document.createElement("tr");
-    var tableInitialsHeader = document.createElement("th");
-    var tableScoreHeader = document.createElement("th");
-    tableInitialsHeader.textContent = "Initials";
-    tableScoreHeader.textContent = "Score";
-    tableHeaderRow.appendChild(tableInitialsHeader);
-    tableHeaderRow.appendChild(tableScoreHeader);
-    highscoreTable.appendChild(tableHeaderRow);
-    for (var highscoreIndex = 0; highscoreIndex < highscoreArr.length; highscoreIndex++){
-        var highscoreRow = document.createElement("tr");
-        var tableInitials = document.createElement("td");
-        var tableScores = document.createElement("td");
-        var storageScores = JSON.parse(localStorage.getItem("highscores"));
-        tableInitials.textContent = storageScores[highscoreIndex].initials;
-        tableScores.textContent = storageScores[highscoreIndex].score;
-        highscoreRow.appendChild(tableInitials);
-        highscoreRow.appendChild(tableScores);
-        highscoreTable.appendChild(highscoreRow);
-    }
-    highscoreDiv.appendChild(highscoreTable);
-    var backBtn = document.createElement("button");
-    backBtn.setAttribute("class","mr-2");
-    backBtn.textContent = "Go Back";
-    highscoreDiv.appendChild(backBtn);
-    var clearBtn = document.createElement("button");
-    clearBtn.textContent = "Clear Highscores";
-    highscoreDiv.appendChild(clearBtn);
+  // clear the game over div
+  gameOverDiv.innerHTML = "";
+  //   create header
+  var highscoreHeader = document.createElement("h2");
+  highscoreHeader.textContent = "Highscores!";
+  highscoreDiv.appendChild(highscoreHeader);
+  //   create table
+  var highscoreTable = document.createElement("table");
+  highscoreTable.setAttribute("class", "table");
+  //   create table headers
+  var tableHeaderRow = document.createElement("tr");
+  var tableInitialsHeader = document.createElement("th");
+  var tableScoreHeader = document.createElement("th");
+  tableInitialsHeader.textContent = "Initials";
+  tableScoreHeader.textContent = "Score";
+  tableHeaderRow.appendChild(tableInitialsHeader);
+  tableHeaderRow.appendChild(tableScoreHeader);
+  highscoreTable.appendChild(tableHeaderRow);
+
+  //   for loop to iterate through local storage array to show scores
+  for (
+    var highscoreIndex = 0;
+    highscoreIndex < highscoreArr.length;
+    highscoreIndex++
+  ) {
+    //   create table rows and elements for initials and scores
+    var highscoreRow = document.createElement("tr");
+    var tableInitials = document.createElement("td");
+    var tableScores = document.createElement("td");
+    var storageScores = JSON.parse(localStorage.getItem("highscores"));
+    tableInitials.textContent = storageScores[highscoreIndex].initials;
+    tableScores.textContent = storageScores[highscoreIndex].score;
+    highscoreRow.appendChild(tableInitials);
+    highscoreRow.appendChild(tableScores);
+    highscoreTable.appendChild(highscoreRow);
   }
+  //   append table to main div
+  highscoreDiv.appendChild(highscoreTable);
+
+  //   create back button
+  var backBtn = document.createElement("button");
+  backBtn.setAttribute("class", "mr-2");
+  backBtn.textContent = "Go Back";
+  highscoreDiv.appendChild(backBtn);
+  //   create clear button
+  var clearBtn = document.createElement("button");
+  clearBtn.textContent = "Clear Highscores";
+  highscoreDiv.appendChild(clearBtn);
+
+  // event listener for back button
+  backBtn.addEventListener("click", function (event) {
+    //   if button is clicked clear the highscore div and go to the start page
+    highscoreDiv.innerHTML = "";
+    startPage();
+  });
+}
