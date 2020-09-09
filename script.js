@@ -93,7 +93,15 @@ function startPage() {
 
 // function to start timer
 function startTimer() {
-  console.log("start timer");
+  var secondsLeft = 75;
+  var timerInterval = setInterval(function () {
+    timer.textContent = "Timer: " + secondsLeft;
+    secondsLeft--;
+    if (secondsLeft < 0 || i === questionsAndAnswers.length) {
+      clearInterval(timerInterval);
+      gameOver();
+    }
+  }, 1000);
 }
 
 // function to render questions
@@ -103,5 +111,5 @@ function renderQuestions() {
 
 // function to go to the list of highscores
 function gotoHighscores() {
-    console.log("go to highscores")
+  console.log("go to highscores");
 }
