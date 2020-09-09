@@ -114,6 +114,15 @@ if (questionIndex === questionsAndAnswers.length){
 var questionHeader = document.createElement("h2");
 questionHeader.textContent = questionsAndAnswers[questionIndex].question;
 quizDiv.appendChild(questionHeader);
+var optionList = document.createElement("ul");
+for (var answerindex = 0; answerindex < 4; answerindex++){
+var answerListEl = document.createElement("li");
+var answerButton = document.createElement("button");
+answerButton.textContent = questionsAndAnswers[questionIndex].answers[answerindex];
+answerListEl.appendChild(answerButton);
+optionList.appendChild(answerListEl);
+}
+quizDiv.appendChild(optionList);
 }
 
 // function to go to the list of highscores
