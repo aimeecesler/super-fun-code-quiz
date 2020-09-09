@@ -7,7 +7,8 @@ var timer = document.getElementById("timer");
 
 // global variables
 var secondsLeft = 75;
-var i = 0;
+var questionIndex = 0;
+var answerindex = 0;
 var highscoreArr = [];
 
 var questionsAndAnswers = [
@@ -106,7 +107,13 @@ function startTimer() {
 
 // function to render questions
 function renderQuestions() {
-  console.log("render questions");
+startDiv.innerHTML = "";
+if (questionIndex === questionsAndAnswers.length){
+    return;
+}
+var questionHeader = document.createElement("h2");
+questionHeader.textContent = questionsAndAnswers[questionIndex].question;
+quizDiv.appendChild(questionHeader);
 }
 
 // function to go to the list of highscores
