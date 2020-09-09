@@ -83,7 +83,6 @@ function startPage() {
 
   // event listener for start button
   startButton.addEventListener("click", function () {
-    i = 0;
     startTimer();
     renderQuestions();
   });
@@ -107,7 +106,6 @@ function startTimer() {
 
 // function to render questions
 function renderQuestions() {
-  i = 0;
   // clear out the start div contents
   startDiv.innerHTML = "";
 
@@ -195,6 +193,7 @@ function gameOver() {
   submitButton.addEventListener("click", function (event) {
     event.preventDefault();
     event.stopImmediatePropagation();
+
     var initialsEntered = input.value;
     highscoreArr.push({ initials: initialsEntered, score: endScore });
     localStorage.setItem("highscores", JSON.stringify(highscoreArr));
@@ -204,6 +203,8 @@ function gameOver() {
 
 // function to go to the list of highscores
 function gotoHighscores() {
+  // clear the start div (for if View Highscore is clicked on the start page)
+  startDiv.innerHTML = "";
   // clear the game over div
   gameOverDiv.innerHTML = "";
   //   create header
@@ -255,8 +256,18 @@ function gotoHighscores() {
 
   // event listener for back button
   backBtn.addEventListener("click", function (event) {
+    event.stopImmediatePropagation();
     //   if button is clicked clear the highscore div and go to the start page
     highscoreDiv.innerHTML = "";
     startPage();
+  });
+
+  // event listener for clear button
+  clearBtn.addEventListener("click", function (event) {
+    event.stopImmediatePropagation();
+    highscoreArr = [];
+    localStorage.clear();
+    highscoreDiv.innerHTML = "";
+    return gotoHighscores();
   });
 }
