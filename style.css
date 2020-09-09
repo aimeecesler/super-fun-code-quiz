@@ -9,15 +9,9 @@ h1 {
 h2 {
   padding-top: 0.5em;
 }
-.btn {
-  background-color: #D90492;
-  color: white;
-  margin-bottom: 1em;
-}
 button:hover {
   background-color: #ee88cc;
 }
-
 ul {
   list-style-type: none;
   text-align: center;
@@ -29,8 +23,13 @@ table {
   margin-top: 5em;
   width: 50%;
 }
-.badge{
-    margin: 0.5em;
+.badge {
+  margin: 0.5em;
+}
+.btn {
+  background-color: #d90492;
+  color: white;
+  margin-bottom: 1em;
 }
 .table {
   max-width: 50%;
@@ -38,7 +37,7 @@ table {
 #timer {
   margin-right: 1em;
   font-size: 2em;
-  color: #D90492;
+  color: #d90492;
   background-color: white;
 }
 #highscore {

@@ -91,7 +91,7 @@ function startPage() {
     startTimer();
     renderQuestions();
   });
-
+  // event listener for highscore button
   viewHighscores.addEventListener("click", function () {
     gotoHighscores();
   });
@@ -102,6 +102,7 @@ function startTimer() {
   var timerInterval = setInterval(function () {
     timer.textContent = "Timer: " + secondsLeft;
     secondsLeft--;
+    // stop the timer if it reaches zero or if the last question has been answered
     if (secondsLeft < 0 || questionIndex === questionsAndAnswers.length) {
       clearInterval(timerInterval);
       setTimeout(gameOver, 1000);
@@ -128,7 +129,11 @@ function renderQuestions() {
   var optionList = document.createElement("ul");
   optionList.setAttribute("class", "col-lg-12");
   // loop through the potential answers and make list items for each
-  for (var answerindex = 0; answerindex < questionsAndAnswers[questionIndex].answers.length; answerindex++) {
+  for (
+    var answerindex = 0;
+    answerindex < questionsAndAnswers[questionIndex].answers.length;
+    answerindex++
+  ) {
     var answerListEl = document.createElement("li");
     var answerButton = document.createElement("button");
     answerButton.setAttribute("class", "btn");
@@ -149,13 +154,11 @@ function renderQuestions() {
       ) {
         quizDiv.innerHTML = "";
         var results = document.createElement("img");
-        results.setAttribute(
-          "src",
-          "./right.gif"
-        );
+        results.setAttribute("src", "./right.gif");
         results.setAttribute("alt", "correct answer meme");
         resultsDiv.appendChild(results);
         questionIndex++;
+        // show image for one second before moving on to next question
         setTimeout(renderQuestions, 1000);
       }
       // if it is the wrong answer
@@ -163,13 +166,11 @@ function renderQuestions() {
         secondsLeft = secondsLeft - 10;
         quizDiv.innerHTML = "";
         var results = document.createElement("img");
-        results.setAttribute(
-          "src",
-          "./wrong.gif"
-        );
+        results.setAttribute("src", "./wrong.gif");
         results.setAttribute("alt", "wrong answer meme");
         resultsDiv.appendChild(results);
         questionIndex++;
+        // show image for one second before moving on to next question
         setTimeout(renderQuestions, 1000);
       }
     }
@@ -193,14 +194,17 @@ function gameOver() {
   gameOverDiv.appendChild(endScoreEl);
   //   create form
   var highscoreForm = document.createElement("form");
+  //   create for label
   var formLabel = document.createElement("label");
   formLabel.setAttribute("class", "form-group mb-2");
   formLabel.textContent = "Enter Initials";
   highscoreForm.appendChild(formLabel);
+  //   create form input
   var input = document.createElement("input");
   input.setAttribute("type", "text");
   input.setAttribute("class", "form-control mr-2 ml-2 mb-2");
   highscoreForm.appendChild(input);
+  //   create form submit button
   var submitButton = document.createElement("button");
   submitButton.setAttribute("class", "btn");
   submitButton.textContent = "Submit";
@@ -310,6 +314,7 @@ function gotoHighscores() {
   // event listener for clear button
   clearBtn.addEventListener("click", function (event) {
     event.stopImmediatePropagation();
+    // if button is clicked, clear highscore array and local storage, reload highscore div
     highscoreArr = [];
     localStorage.clear();
     highscoreDiv.innerHTML = "";

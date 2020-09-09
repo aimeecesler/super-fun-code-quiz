@@ -1,7 +1,7 @@
 # SUPER FUN CODE QUIZ
 The purpose of this repository is .......
 
-![HTML](######)
+![Code Quiz](codequiz.png)
 
 ## Table of Contents
 * [Installation](#installation)
