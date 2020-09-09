@@ -97,7 +97,7 @@ function startTimer() {
   var timerInterval = setInterval(function () {
     timer.textContent = "Timer: " + secondsLeft;
     secondsLeft--;
-    if (secondsLeft < 0 || i === questionsAndAnswers.length) {
+    if (secondsLeft < 0) {
       clearInterval(timerInterval);
       gameOver();
     }
@@ -112,4 +112,9 @@ function renderQuestions() {
 // function to go to the list of highscores
 function gotoHighscores() {
   console.log("go to highscores");
+}
+
+// function to go to the game over form
+function gameOver(){
+    console.log("game over");
 }
