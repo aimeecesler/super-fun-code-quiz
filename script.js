@@ -10,6 +10,7 @@ var timer = document.getElementById("timer");
 var secondsLeft = 75;
 var questionIndex = 0;
 var endScore;
+var initials;
 var answerindex;
 var highscoreArr = [];
 var timerInterval;
@@ -196,4 +197,12 @@ function gameOver() {
   submitButton.textContent = "Submit";
   highscoreForm.appendChild(submitButton);
   gameOverDiv.appendChild(highscoreForm);
+
+//   add event listener for submit button
+submitButton.addEventListener("click", function(event){
+    event.preventDefault();
+    var initialsEntered = input.value;
+    highscoreArr.push({initials: initialsEntered, score: endScore});
+    localStorage.setItem("highscores",JSON.stringify(highscoreArr));
+})
 }
