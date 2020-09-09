@@ -54,16 +54,20 @@ ENTER INFO ABOUT BUILDING THE QUIZ
 -----
 
 ## Credits
-ENTER THANK YOUS HERE
+A big thank you to the instructional staff for putting up with our many layers of confusion with learning javascript.
 
 ### Resources:
 
 * [w3schools](https://www.w3schools.com)
+* [setInterval - Stack Overflow](https://stackoverflow.com/questions/8779845/javascript-setinterval-not-working)
+* [Local Storage Arrays - Stack Overflow](https://stackoverflow.com/questions/13702100/localstorage-array-of-objects-handling#:~:text=Just%20convert%20the%20objects%20to,stringify(objects))
+* [Retaining Local Storage Arrays on Refresh - Stack Overflow](https://stackoverflow.com/questions/22726080/how-to-retain-javascript-array-while-page-refresh)
+* [Bootstrap CSS](https://getbootstrap.com/)
 
 ### Images Used
-* [Background Image]()
-* [Wrong Answer GIF]()
-* [Right Answer GIF]()
+* [Background Image](https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&w=1000&q=80)
+* [Wrong Answer GIF](https://media0.giphy.com/media/VEu2A22WVrTug2la7V/giphy.gif)
+* [Right Answer GIF](https://memecrunch.com/meme/C4XQK/yesssss-correct-answer/image.gif?w=580&c=1)
 
 
 -----
