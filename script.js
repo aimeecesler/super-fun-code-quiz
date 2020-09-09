@@ -165,6 +165,7 @@ function renderQuestions() {
 
 // function to go to the game over form
 function gameOver() {
+  quizDiv.innerHTML = "";
   //   clear results div
   resultsDiv.innerHTML = "";
   // create header
@@ -229,6 +230,8 @@ function gotoHighscores() {
   startDiv.innerHTML = "";
   // clear the game over div
   gameOverDiv.innerHTML = "";
+  // clear the highscore div just in case there is already data there so you don't get a duplicate table
+  highscoreDiv.innerHTML = "";
   //   create header
   var highscoreHeader = document.createElement("h2");
   highscoreHeader.textContent = "Highscores!";
