@@ -1,6 +1,6 @@
 body {
-  background-image: url(./background.jpeg);
-  background-size: 100%;
+  background-image: url(./backgroundpattern.jpeg);
+  background-repeat: repeat;
 }
 h1 {
   text-align: center;
@@ -10,7 +10,7 @@ h2 {
   padding-top: 0.5em;
 }
 button:hover {
-  background-color: #ee88cc;
+  background-color: #ffefb0;
 }
 ul {
   list-style-type: none;
@@ -27,8 +27,7 @@ table {
   margin: 0.5em;
 }
 .btn {
-  background-color: #d90492;
-  color: white;
+  background-color: #ffcc05;
   margin-bottom: 1em;
 }
 .table {
@@ -37,8 +36,7 @@ table {
 #timer {
   margin-right: 1em;
   font-size: 2em;
-  color: #d90492;
-  background-color: white;
+  background-color: #ffcc05;
 }
 #highscore {
   margin-left: 2em;
@@ -46,11 +44,11 @@ table {
 }
 #start-div {
   justify-content: center;
-  background-color: white;
+  background-color: lightgray;
 }
 #questions-div {
   justify-content: center;
-  background-color: white;
+  background-color: lightgray;
 }
 #results-div {
   justify-content: center;
@@ -58,10 +56,22 @@ table {
 #game-over-form {
   justify-content: center;
   text-align: center;
-  background-color: white;
+  background-color: lightgray;
 }
 #highscore-div {
-  background-color: white;
+  background-color: lightgray;
   justify-content: center;
   text-align: center;
 }
+@media screen and (max-width: 768px){
+    .container {
+        width: 75%;
+      }
+}
+
+@media screen and (max-width: 480px){
+    .container {
+        width: 100%;
+      }
+}
+
