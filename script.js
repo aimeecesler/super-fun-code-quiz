@@ -244,11 +244,12 @@ function gotoHighscores() {
   highscoreDiv.innerHTML = "";
   //   create header
   var highscoreHeader = document.createElement("h2");
+  highscoreHeader.setAttribute("class","col-lg-12");
   highscoreHeader.textContent = "Highscores!";
   highscoreDiv.appendChild(highscoreHeader);
   //   create table
   var highscoreTable = document.createElement("table");
-  highscoreTable.setAttribute("class", "table");
+  highscoreTable.setAttribute("class", "table col-lg-12");
   //   create table headers
   var tableHeaderRow = document.createElement("tr");
   var tableInitialsHeader = document.createElement("th");
@@ -280,14 +281,17 @@ function gotoHighscores() {
   highscoreDiv.appendChild(highscoreTable);
 
   //   create back button
+  var buttonDiv = document.createElement("div");
+  buttonDiv.setAttribute("class","col-lg-12");
   var backBtn = document.createElement("button");
   backBtn.setAttribute("class", "mr-2");
   backBtn.textContent = "Go Back";
-  highscoreDiv.appendChild(backBtn);
+  buttonDiv.appendChild(backBtn);
   //   create clear button
   var clearBtn = document.createElement("button");
   clearBtn.textContent = "Clear Highscores";
-  highscoreDiv.appendChild(clearBtn);
+  buttonDiv.appendChild(clearBtn);
+  highscoreDiv.appendChild(buttonDiv);
 
   // event listener for back button
   backBtn.addEventListener("click", function (event) {

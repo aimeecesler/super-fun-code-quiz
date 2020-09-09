@@ -1,37 +1,60 @@
+body {
+  background-color: lightgray;
+}
+h1 {
+  text-align: center;
+  padding-top: 0.5em;
+}
+h2 {
+  padding-top: 0.5em;
+}
+button {
+  background-color: #745e8f;
+  color: white;
+  margin-bottom: 1em;
+}
+button:hover {
+  background-color: #b69fd1;
+}
+
+ul {
+  list-style-type: none;
+  text-align: center;
+}
+table {
+  border-collapse: inherit;
+}
+.container {
+  margin-top: 5em;
+  width: 50%;
+}
+.table {
+  max-width: 50%;
+}
 #timer {
   padding-right: 1em;
 }
 #highscore {
   padding-left: 1em;
 }
-.container {
-  margin-top: 5em;
-  width: 50%;
-}
-button {
-  background-color: #745e8f;
-  color: white;
-}
-button:hover {
-  background-color: #b69fd1;
-}
-body {
-  background-color: lightgray;
-}
-ul {
-  list-style-type: none;
-  padding-inline-start: 0;
-}
-h1 {
-  text-align: center;
-}
 #start-div {
+  justify-content: center;
+  background-color: white;
+}
+#questions-div {
+  justify-content: center;
+  background-color: white;
+}
+#results-div {
   justify-content: center;
 }
 #game-over-form {
   justify-content: center;
   text-align: center;
+  background-color: white;
 }
-#results-div {
-    justify-content: center;
-  }
+#highscore-div {
+  background-color: white;
+  justify-content: center;
+  text-align: center;
+}
