@@ -112,8 +112,9 @@ function startTimer() {
 function renderQuestions() {
   // clear out the start div contents
   startDiv.innerHTML = "";
+  //   clear the results div contents
+  resultsDiv.innerHTML = "";
 
-  quizDiv.innerHTML = "";
   // stop at the end of the q&a array
   if (questionIndex === questionsAndAnswers.length) {
     return;
@@ -124,6 +125,7 @@ function renderQuestions() {
   quizDiv.appendChild(questionHeader);
   // create list
   var optionList = document.createElement("ul");
+  optionList.setAttribute("class", "col-lg-12");
   // loop through the potential answers and make list items for each
   for (var answerindex = 0; answerindex < 4; answerindex++) {
     var answerListEl = document.createElement("li");
@@ -137,27 +139,36 @@ function renderQuestions() {
   // listen for the click
   quizDiv.addEventListener("click", function (event) {
     event.stopImmediatePropagation();
-    resultsDiv.innerHTML = "";
     if (event.target.matches("button")) {
       // if it is the correct answer
       if (
         event.target.textContent ==
         questionsAndAnswers[questionIndex].correctAnswer
       ) {
-        var results = document.createElement("p");
-        results.textContent = "Correct!";
+        quizDiv.innerHTML = "";
+        var results = document.createElement("img");
+        results.setAttribute(
+          "src",
+          "https://memecrunch.com/meme/C4XQK/yesssss-correct-answer/image.gif?w=580&c=1"
+        );
+        results.setAttribute("alt", "correct answer meme");
         resultsDiv.appendChild(results);
         questionIndex++;
-        renderQuestions();
+        setTimeout(renderQuestions, 2000);
       }
       // if it is the wrong answer
       else {
         secondsLeft = secondsLeft - 10;
-        var results = document.createElement("p");
-        results.textContent = "Wrong!";
+        quizDiv.innerHTML = "";
+        var results = document.createElement("img");
+        results.setAttribute(
+          "src",
+          "https://media0.giphy.com/media/VEu2A22WVrTug2la7V/giphy.gif"
+        );
+        results.setAttribute("alt", "wrong answer meme");
         resultsDiv.appendChild(results);
         questionIndex++;
-        renderQuestions();
+        setTimeout(renderQuestions, 2000);
       }
     }
   });

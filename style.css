@@ -20,6 +20,7 @@ body {
 }
 ul {
   list-style-type: none;
+  padding-inline-start: 0;
 }
 h1 {
   text-align: center;
@@ -27,8 +28,10 @@ h1 {
 #start-div {
   justify-content: center;
 }
-
 #game-over-form {
   justify-content: center;
   text-align: center;
 }
+#results-div {
+    justify-content: center;
+  }
