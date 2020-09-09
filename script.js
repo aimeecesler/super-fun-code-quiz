@@ -164,11 +164,6 @@ function renderQuestions() {
   });
 }
 
-// function to go to the list of highscores
-function gotoHighscores() {
-  console.log("go to highscores");
-}
-
 // function to go to the game over form
 function gameOver() {
   // create header
@@ -204,5 +199,28 @@ submitButton.addEventListener("click", function(event){
     var initialsEntered = input.value;
     highscoreArr.push({initials: initialsEntered, score: endScore});
     localStorage.setItem("highscores",JSON.stringify(highscoreArr));
+    gotoHighscores();
 })
 }
+
+// function to go to the list of highscores
+function gotoHighscores() {
+    gameOverDiv.innerHTML = "";
+    var highscoreHeader = document.createElement("h2");
+    highscoreHeader.textContent = "Highscores!";
+    highscoreDiv.appendChild(highscoreHeader);
+    for (var highscoreIndex = 0; highscoreIndex < highscoreArr.length; highscoreIndex++){
+        var highscoreTable = document.createElement("table");
+        highscoreTable.setAttribute("class","table");
+        var highscoreRow = document.createElement("tr");
+        var tableInitials = document.createElement("td");
+        var tableScores = document.createElement("td");
+        var storageScores = JSON.parse(localStorage.getItem("highscores"));
+        tableInitials.textContent = storageScores[highscoreIndex].initials;
+        tableScores.textContent = storageScores[highscoreIndex].score;
+        highscoreRow.appendChild(tableInitials);
+        highscoreRow.appendChild(tableScores);
+        highscoreTable.appendChild(highscoreRow);
+        highscoreDiv.appendChild(highscoreTable);
+    }
+  }
