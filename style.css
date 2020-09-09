@@ -1,0 +1,22 @@
+#timer {
+    padding-right: 1em;
+  }
+  #highscore {
+    padding-left: 1em;
+  }
+  .container {
+    margin-top: 5em;
+  }
+  button {
+    background-color: #745e8f;
+    color: white;
+  }
+  button:hover {
+    background-color: #b69fd1;
+  }
+  body {
+    background-color: lightgray;
+  }
+  ul {
+    list-style-type: none;
+  }
